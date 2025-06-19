@@ -1,30 +1,17 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('nameForm');
+function getFormvalue() {
+    // Get form values
+    const firstName = document.getElementById('fname').value.trim();
+    const lastName = document.getElementById('lname').value.trim();
     
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        // Get form values and trim whitespace
-        const firstName = document.getElementById('fname').value.trim();
-        const lastName = document.getElementById('lname').value.trim();
-        
-        // Validate inputs
-        if (!firstName) {
-            alert('Please enter your first name');
-            document.getElementById('fname').focus();
-            return;
-        }
-        
-        if (!lastName) {
-            alert('Please enter your last name');
-            document.getElementById('lname').focus();
-            return;
-        }
-        
-        // Display full name
-        alert(`Full Name: ${firstName} ${lastName}`);
-        
-        // Optional: Reset the form
-        form.reset();
-    });
-});
+    // Validate inputs
+    if (!firstName || !lastName) {
+        alert('Please fill in both fields');
+        return false; // Prevent form submission
+    }
+    
+    // Show full name
+    alert(firstName + ' ' + lastName);
+    
+    // Prevent default form submission
+    return false;
+}

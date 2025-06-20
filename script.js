@@ -1,17 +1,14 @@
-function getFormvalue() {
-    // Get form values
-    const firstName = document.getElementById('fname').value.trim();
-    const lastName = document.getElementById('lname').value.trim();
-    
-    // Validate inputs
-    if (!firstName || !lastName) {
-        alert('Please fill in both fields');
-        return false; // Prevent form submission
+function getFormvalue(event) {
+    event.preventDefault(); // Prevent form from submitting
+
+    // Get trimmed values
+    const firstName = document.getElementById("fname").value.trim();
+    const lastName = document.getElementById("lname").value.trim();
+
+    // Check for empty inputs
+    if (firstName === "" && lastName === "") {
+        alert("Please enter your name.");
+    } else {
+        alert(`${firstName} ${lastName}`.trim());
     }
-    
-    // Show full name
-    alert(firstName + ' ' + lastName);
-    
-    // Prevent default form submission
-    return false;
 }
